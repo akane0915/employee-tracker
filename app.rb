@@ -24,3 +24,23 @@ post '/divisions' do
   division = Division.create({:title => params['title']})
   erb :index
 end
+
+get '/divisions/:id' do
+  id = params['id'].to_i
+  @division = Division.find(id)
+  erb :division
+end
+
+patch '/divisions/:id' do
+  title = params['title']
+  @division = Division.find([params['id'].to_i]).first
+  @division.update({:title => title})
+  erb :division
+end
+
+delete '/divisions/:id' do
+  division = Division.find([params['id'].to_i]).first
+  division.delete
+  @divisions = Division.all
+  erb :index
+end
