@@ -12,9 +12,7 @@
 <% else %>
   <p>You have not created any divisions yet.</p>
 <% end %>
-<hr>
-
-
+<br>
 <!--Create a Division-->
 <h1>Create a Division:</h1>
 
@@ -25,5 +23,21 @@
 
   <button class="btn btn-default" type="submit">Create Division</button>
 </form>
-<br>
-<br><a class="btn btn-default" href="/employees">View all Employees</a>
+<hr>
+<!--List of all projects-->
+<h1>Projects:</h1>
+<% if @projects.any? %>
+
+  <ul>
+    <% @projects.each do |project| %>
+      <li><a href='/projects/<%=project.id%>' ><%= project.description %></a></li>
+    <% end%>
+  </ul>
+
+<% else %>
+  <p>You have not created any projects yet.</p>
+<% end %>
+<br><a class="btn btn-default" href="/projects/new">Create Project</a>
+
+<!-- link to all employees -->
+<hr><a class="btn btn-default" href="/employees">View all Employees</a>

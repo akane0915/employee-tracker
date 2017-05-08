@@ -10,6 +10,7 @@ also_reload('lib/**/*.rb')
 
 get '/' do
   @divisions = Division.all
+  @projects = Project.all
   erb :index
 end
 
@@ -61,4 +62,20 @@ end
 get '/employees' do
   @employees = Employee.all
   erb :employees
+end
+
+get '/employees/:id' do
+  @employee = Employee.find(params['id'].to_i)
+  erb :employee
+end
+
+get '/projects/new' do
+  erb :project_form
+end
+
+post '/projects' do
+  @divisions = Division.all
+  @projects = Project.all
+  project = Project.create({:description => params['description']})
+  erb :index
 end
