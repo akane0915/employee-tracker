@@ -1,1 +1,15 @@
 <h1>Employees:</h1>
+
+<% if @employees.any? %>
+
+  <ul>
+    <% @employees.each do |employee| %>
+      <li><a href='/employees/<%=employee.id%>' ><%= employee.name %></a></li>
+    <% end%>
+  </ul>
+
+<% else %>
+  <p>You have not created any employees yet.</p>
+<% end %>
+<hr>
+<br><a class="btn btn-default" href="/">Home</a>

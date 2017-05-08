@@ -16,6 +16,7 @@ end
 get '/divisions/:id' do
   id = params['id'].to_i
   @division = Division.find(id)
+  @employees = @division.employees
   erb :division
 end
 
@@ -28,6 +29,7 @@ end
 get '/divisions/:id' do
   id = params['id'].to_i
   @division = Division.find(id)
+  @employees = @division.employees
   erb :division
 end
 
@@ -53,5 +55,10 @@ end
 post '/employees' do
   @employees = Employee.all
   @employee = Employee.create({:name => params['name'], :division_id => params['division_id']})
+  erb :employees
+end
+
+get '/employees' do
+  @employees = Employee.all
   erb :employees
 end

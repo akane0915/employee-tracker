@@ -1,5 +1,19 @@
 <h1> <%= @division.title %> </h1>
 
+<% if @employees.any? %>
+<h2>Division Employees:</h2>
+
+  <ul>
+    <% @employees.each do |employee| %>
+      <li><a href='/employees/<%=employee.id%>' ><%= employee.name %></a></li>
+    <% end%>
+  </ul>
+
+<% else %>
+  <p>You have not created any employees yet.</p>
+<% end %>
+<br><a class="btn btn-default" href="/employees/new">Add an Employee</a>
+
 <h4>Update this Division:</h4>
 
 <form action="/divisions/<%= @division.id() %>" method="post">
@@ -17,5 +31,6 @@
   <button type="submit">Delete This Division</button>
 </form>
 
-<br><a class="btn btn-default" href="/employees/new">Add an Employee</a>
+
+
 <br><a class="btn btn-default" href="/">Home</a>
