@@ -3,7 +3,7 @@ require "spec_helper"
 describe Division do
 
   describe '#employees' do
-    it 'returns the employees for a division' do
+    it 'returns the employees assigned to a division' do
       division = Division.create({:title => 'HR'})
       employee1 = Employee.create({:name => 'Joe Bob', :division_id => division.id})
       employee2 = Employee.create({:name => 'Betty Sue', :division_id => division.id})
