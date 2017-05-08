@@ -1,0 +1,18 @@
+<h1>Create an Employee:</h1>
+
+<form action="/employees" method="post">
+
+  <label for="name">Employee Name:</label>
+  <input id="name" name="name" type="text">
+
+  <label for="division_id">Select a Division</label>
+  <select id="division_id" name="division_id" type="text">
+    <% @divisions.each do |division| %>
+      <option value="<%= division.id%>"> <%= division.title %></option>
+    <% end %>
+  </select>
+
+  <button class="btn btn-default" type="submit">Create Employee</button>
+</form>
+
+<a href="/">Home</a>

@@ -44,3 +44,14 @@ delete '/divisions/:id' do
   @divisions = Division.all
   erb :index
 end
+
+get '/employees/new' do
+  @divisions = Division.all
+  erb :employee_form
+end
+
+post '/employees' do
+  @employees = Employee.all
+  @employee = Employee.create({:name => params['name'], :division_id => params['division_id']})
+  erb :employees
+end
